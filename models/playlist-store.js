@@ -1,4 +1,6 @@
 'use strict';
+// lodash library utility to delete song from an array
+const _ = require('lodash');
 
 const playlistStore = {
 
@@ -9,14 +11,13 @@ const playlistStore = {
   },
 
   getPlaylist(id) {
-    let foundPlaylist = null;
-    for (let playlist of this.playlistCollection) {
-      if (id == playlist.id) {
-        foundPlaylist = playlist;
-      }
-    }
-
-    return foundPlaylist;
+    return _.find(this.playlistCollection, { id: id });
+  },
+  
+  removeSong(id, songId) {
+    const playlist = this.getPlaylist(id);
+    // lodash remove
+    _.remove(playlist.songs, { id: songId });
   },
 };
 
