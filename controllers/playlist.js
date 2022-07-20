@@ -23,6 +23,15 @@ const playlist = {
     playlistStore.removeSong(playlistId, songId);
     response.redirect('/playlist/' + playlistId);
   },
+  
+  // add song
+  addSong(request, response) {
+    const playlistId = request.params.id;
+    const playlist = palylistStore.getPlaylist(playlistId);
+    const newSong = {
+      
+    }
+  }
 };
 
 module.exports = playlist;
