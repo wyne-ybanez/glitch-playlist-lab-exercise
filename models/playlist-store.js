@@ -19,6 +19,10 @@ const playlistStore = {
     // lodash remove
     _.remove(playlist.songs, { id: songId });
   },
+  
+  removePlaylist(id) {
+    _.remove(this.playlistCollection, { id: id });
+  },
 };
 
 module.exports = playlistStore;
