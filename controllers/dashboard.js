@@ -3,6 +3,9 @@
 const logger = require("../utils/logger");
 const playlistStore = require('../models/playlist-store');
 
+// Gives playlists a unique ID
+const uuid = require('uuid');
+
 const dashboard = {
   // Index
   index(request, response) {
@@ -21,6 +24,11 @@ const dashboard = {
     logger.debug(`Deleting Playlist ${playlistId}`);
     playlistStore.removePlaylist(playlistId);
     response.redirect('/dashboard');
+  },
+  
+  // Add Playlist
+  addPlaylist(request, response) {
+    const new
   }
 };
 
