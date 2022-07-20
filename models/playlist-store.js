@@ -11,7 +11,9 @@ const playlistStore = {
   },
 
   getPlaylist(id) {
-    return _.find(this.playlistCollection, { id: id });
+    return _.find(this.playlistCollection, { 
+      id: id 
+    });
   },
   
   removeSong(id, songId) {
@@ -22,6 +24,11 @@ const playlistStore = {
   
   removePlaylist(id) {
     _.remove(this.playlistCollection, { id: id });
+  },
+  
+  addSong(id, song) {
+    const playlist = this.getPlaylist(id);
+    playlist.songs.push(song);
   },
 };
 
