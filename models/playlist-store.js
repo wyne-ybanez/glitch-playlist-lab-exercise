@@ -1,12 +1,12 @@
-'use strict';
+"use strict";
 
-const _ = require('lodash');
-const JsonStore = require('./json-store');
+const _ = require("lodash");
+const JsonStore = require("./json-store");
 
 const playlistStore = {
   // Ensures the app data persists in a JSON file
-  store: new JsonStore('./models/playlist-store.json', { playlistCollection: [] }),
-  collection: 'playlistCollection',
+  store: new JsonStore("./models/playlist-store.json", { playlistCollection: [] }),
+  collection: "playlistCollection",
 
   getAllPlaylists() {
     return this.store.findAll(this.collection);
@@ -35,13 +35,23 @@ const playlistStore = {
   addSong(id, song) {
     const playlist = this.getPlaylist(id);
     playlist.songs.push(song);
+    let duration = 0;
+
+    // Iterate over the playlist.songs array, and accumulate the duration of each
+    // song into the duration local variable.
+    for (let i of playlist.songs) {
+      duration += playlist.songs[i].duration;
+    }
+
+    // Now store the duration in playlist.store
+    playlist.duration = duration;
     this.store.save();
   },
 
   removeSong(id, songId) {
     const playlist = this.getPlaylist(id);
     const songs = playlist.songs;
-    _.remove(songs, { id: songId});
+    _.remove(songs, { id: songId });
     this.store.save();
   },
 };
