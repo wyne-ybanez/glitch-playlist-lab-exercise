@@ -28,8 +28,15 @@ const dashboard = {
   
   // Add Playlist
   addPlaylist(request, response) {
-    const new
-  }
+    const newPlaylist = {
+      id: uuid.v1(),
+      title: request.body.title,
+      songs:[],
+    };
+    playlistStore.addPlaylist(newPlaylist);
+    response.redirect('/dashboard');
+  },
+  
 };
 
 module.exports = dashboard;
