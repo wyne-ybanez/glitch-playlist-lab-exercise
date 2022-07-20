@@ -4,7 +4,7 @@ const _ = require('lodash');
 const JsonStore = require('./json-store');
 
 const playlistStore = {
-
+  // Ensures the app data persists in a JSON file
   store: new JsonStore('./models/playlist-store.json', { playlistCollection: [] }),
   collection: 'playlistCollection',
 
