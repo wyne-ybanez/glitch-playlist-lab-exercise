@@ -10,11 +10,11 @@ const accounts = {
     const viewData = {
       title: "Login or Signup",
     };
-    reponse.render(index, viewData);
+    reponse.render("index", viewData);
   },
 
   // Accounts login
-  login(request, reponse) {
+  login(request, response) {
     const viewData = {
       title: "Login to the Service",
     };
