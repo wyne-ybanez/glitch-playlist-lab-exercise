@@ -5,7 +5,9 @@ const JsonStore = require("./json-store");
 
 const playlistStore = {
   // Ensures the app data persists in a JSON file
-  store: new JsonStore("./models/playlist-store.json", { playlistCollection: [] }),
+  store: new JsonStore("./models/playlist-store.json", {
+    playlistCollection: [],
+  }),
   collection: "playlistCollection",
 
   getAllPlaylists() {
@@ -13,7 +15,15 @@ const playlistStore = {
   },
 
   getPlaylist(id) {
-    return this.store.findOneBy(this.collection, { id: id });
+    return this.store.findOneBy(this.collection, {
+      id: id,
+    });
+  },
+
+  getUserPlaylists(userid) {
+    return this.store.findBy(this.collection, {
+      userid: userid,
+    });
   },
 
   addPlaylist(playlist) {
@@ -35,11 +45,12 @@ const playlistStore = {
   addSong(id, song) {
     const playlist = this.getPlaylist(id);
     playlist.songs.push(song);
+
     let duration = 0;
 
     // Iterate over the playlist.songs array, and accumulate the duration of each
     // song into the duration local variable.
-    for (let i of playlist.songs) {
+    for (let i of playlist.songs.length) {
       duration += playlist.songs[i].duration;
     }
 
