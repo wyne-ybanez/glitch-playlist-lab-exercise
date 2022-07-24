@@ -8,6 +8,7 @@ const playlistStore = {
   store: new JsonStore("./models/playlist-store.json", {
     playlistCollection: [],
   }),
+
   collection: "playlistCollection",
 
   getAllPlaylists() {
@@ -50,7 +51,7 @@ const playlistStore = {
 
     // Iterate over the playlist.songs array, and accumulate the duration of each
     // song into the duration local variable.
-    for (let i of playlist.songs.length) {
+    for (let i = 0; i < playlist.songs.length; i++) {
       duration += playlist.songs[i].duration;
     }
 
@@ -63,6 +64,22 @@ const playlistStore = {
     const playlist = this.getPlaylist(id);
     const songs = playlist.songs;
     _.remove(songs, { id: songId });
+    this.store.save();
+  },
+
+  // getSong retrieves a song object given its playlist + song id.
+  getSong(id, songId) {
+    const playlist = this.store.findOneBy(this.collection, { id: id });
+    const songs = playlist.songs.filter((song) => song.id == songId);
+    return songs[0];
+  },
+
+  // updateSong accepts one existing song + modified (edited) version of that song,
+  // overwrites each field (whether it is changed or not), and then saves the updated song.
+  updateSong(song, updatedSong) {
+    song.title = updatedSong.title;
+    song.artist = updatedSong.artist;
+    song.duration = updatedSong.duration;
     this.store.save();
   },
 };

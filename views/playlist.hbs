@@ -1,10 +1,8 @@
-{{> menu}}
-
 <section class="ui center aligned middle aligned segment">
   <h2 class="ui header">
-    {{playlist.title}}
+    {{theList.title}}
   </h2>
-  <!--  Deriving from partials  -->
+  <h4> Shortest song: {{shortestSong.title}}</h4>
   {{> listsongs}}
   {{> addsong}}
 </section>

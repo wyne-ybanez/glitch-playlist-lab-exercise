@@ -1,9 +1,30 @@
 {
   "playlistCollection": [
     {
-      "id": "e64423e0-09fb-11ed-bec8-5d849d42230e",
-      "title": "Homer's First List ",
-      "songs": []
+      "id": "5a94e820-0b54-11ed-8a01-73a65c4b2b95",
+      "userid": "3ad52697-6d98-4d80-8273-084de55a86c0",
+      "title": "test playlist ",
+      "songs": [
+        {
+          "id": "03ff4f30-0b56-11ed-b758-abf8104546bf",
+          "title": "test1",
+          "artist": "test",
+          "duration": 2
+        },
+        {
+          "id": "06afc930-0b56-11ed-b758-abf8104546bf",
+          "title": "test ",
+          "artist": "test ",
+          "duration": 4
+        },
+        {
+          "id": "4f41f8d0-0b56-11ed-b758-abf8104546bf",
+          "title": "test",
+          "artist": "test",
+          "duration": 10
+        }
+      ],
+      "duration": 16
     }
   ]
 }

@@ -11,9 +11,29 @@ const playlist = {
   index(request, response) {
     const playlistId = request.params.id;
     logger.debug("Playlist id = ", playlistId);
+
+    let shortestSong = null;
+    const playlist = playlistStore.getPlaylist(playlistId);
+
+    /*
+    - Set shortestSong to the first song in the array (if there is one)
+    - Loop through the array until we reach the end
+    - If we locate any shorter song, set it to shortestSong
+    */
+    if (playlist.songs.length > 0) {
+      shortestSong = playlist.songs[0];
+      for (let i = 1; i < playlist.songs.length; i++) {
+        if (playlist.songs[i].duration < shortestSong.duration) {
+          shortestSong = playlist.songs[i];
+        }
+      }
+    }
+
+    console.log(shortestSong);
     const viewData = {
       title: "Playlist",
       playlist: playlistStore.getPlaylist(playlistId),
+      shortestSong: shortestSong,
     };
     response.render("playlist", viewData);
   },
