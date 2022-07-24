@@ -1,30 +1,47 @@
 {
   "playlistCollection": [
     {
-      "id": "5a94e820-0b54-11ed-8a01-73a65c4b2b95",
+      "id": "8b301260-d267-11eb-a8f7-591ae1064ded",
       "userid": "3ad52697-6d98-4d80-8273-084de55a86c0",
-      "title": "test playlist ",
+      "title": "Beethoven Sonatas",
+      "duration": 16,
       "songs": [
         {
-          "id": "03ff4f30-0b56-11ed-b758-abf8104546bf",
-          "title": "test1",
-          "artist": "test",
-          "duration": 2
+          "id": "04",
+          "title": "Piano Sonata No. 3",
+          "artist": "Beethoven",
+          "genre": "Classical",
+          "duration": 5
         },
         {
-          "id": "06afc930-0b56-11ed-b758-abf8104546bf",
-          "title": "test ",
-          "artist": "test ",
+          "id": "05",
+          "title": "Piano Sonata No. 7",
+          "artist": "Beethoven",
+          "genre": "Classical",
+          "duration": 6
+        },
+        {
+          "id": "06",
+          "title": "Piano Sonata No. 10",
+          "artist": "Beethoven",
+          "genre": "Classical",
           "duration": 4
-        },
+        }
+      ]
+    },
+    {
+      "id": "38ffa6e0-0b6e-11ed-98e3-030ba622b351",
+      "userid": "3ad52697-6d98-4d80-8273-084de55a86c0",
+      "title": "test title ",
+      "songs": [
         {
-          "id": "4f41f8d0-0b56-11ed-b758-abf8104546bf",
-          "title": "test",
-          "artist": "test",
-          "duration": 10
+          "id": "3e5fb080-0b6e-11ed-98e3-030ba622b351",
+          "title": "test title ",
+          "artist": "test artist",
+          "duration": 1
         }
       ],
-      "duration": 16
+      "duration": 1
     }
   ]
 }

@@ -2,6 +2,7 @@
 
 const logger = require("../utils/logger");
 const playlistStore = require("../models/playlist-store");
+const playlistAnalytics = require("../utils/playlist-analytics");
 
 // Gives each song a unique ID
 const uuid = require("uuid");
@@ -12,28 +13,15 @@ const playlist = {
     const playlistId = request.params.id;
     logger.debug("Playlist id = ", playlistId);
 
-    let shortestSong = null;
     const playlist = playlistStore.getPlaylist(playlistId);
 
-    /*
-    - Set shortestSong to the first song in the array (if there is one)
-    - Loop through the array until we reach the end
-    - If we locate any shorter song, set it to shortestSong
-    */
-    if (playlist.songs.length > 0) {
-      shortestSong = playlist.songs[0];
-      for (let i = 1; i < playlist.songs.length; i++) {
-        if (playlist.songs[i].duration < shortestSong.duration) {
-          shortestSong = playlist.songs[i];
-        }
-      }
-    }
-
-    console.log(shortestSong);
     const viewData = {
       title: "Playlist",
-      playlist: playlistStore.getPlaylist(playlistId),
-      shortestSong: shortestSong,
+      playlist: playlist,
+      playlistSummary: {
+        shortestSong: playlistAnalytics.getShortestSong(playlist),
+        duration: playlistAnalytics.getPlaylistDuration(playlist),
+      },
     };
     response.render("playlist", viewData);
   },
